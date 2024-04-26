@@ -2,12 +2,11 @@ import express from "express";
 import multer from "multer";
 import { storage } from "./configuration/multerConfig";
 
-const upload = multer({ storage });
+const upload = multer({ storage: storage });
 
 const app = express();
 
 app.post("/upload", upload.single("file"), (req, res) => {
-  console.log(req.file);
   return res.json({ message: "file uploaded successfully" });
 });
 
